@@ -1,18 +1,26 @@
 import React from 'react'
-import Hero from './components/Hero'
-import FeaturedProducts from './components/FeaturedProducts'
-import Testimonials from './components/Testimonials'
-import { About, Footer } from './components/AboutFooter'
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import Navbar from './components/Navbar'
+import Home from './components/Home'
+import ProductsPage from './components/ProductsPage'
+import ProductDetail from './components/ProductDetail'
+import Account from './components/Account'
+import AdminPanel from './components/AdminPanel'
 
 function App() {
   return (
-    <div className="font-inter antialiased">
-      <Hero />
-      <FeaturedProducts />
-      <Testimonials />
-      <About />
-      <Footer />
-    </div>
+    <BrowserRouter>
+      <div className="min-h-screen bg-neutral-950 text-white">
+        <Navbar />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/produtos" element={<ProductsPage />} />
+          <Route path="/produtos/:id" element={<ProductDetail />} />
+          <Route path="/conta" element={<Account />} />
+          <Route path="/admin" element={<AdminPanel />} />
+        </Routes>
+      </div>
+    </BrowserRouter>
   )
 }
 
